@@ -1,8 +1,9 @@
-import path from 'path'
 import * as fs from 'fs'
 import * as fsp from 'fs/promises'
+import path from 'path'
 import * as prettier from 'prettier'
 import { Config } from './config'
+import { parseRouteFromFile } from './parse/parse'
 import { cleanPath, logging, trimPathLeft } from './utils'
 
 let latestTask = 0
@@ -291,6 +292,8 @@ export async function generator(config: Config) {
             (match, p1, p2, p3) => `${p1}${escapedRoutePath}${p3}`,
           )
       }
+
+      parseRouteFromFile(node, routeCode)
 
       if (replaced !== routeCode) {
         logger.log(`🟡 Updating ${node.fullPath}`)
@@ -629,6 +632,7 @@ export async function generator(config: Config) {
     )
   }
 
+  debugger
   logger.log(
     `✅ Processed ${routeNodes.length === 1 ? 'route' : 'routes'} in ${
       Date.now() - start

@@ -1,10 +1,10 @@
-import * as React from 'react'
 import {
   ErrorComponent,
   ErrorComponentProps,
   Link,
   createFileRoute,
 } from '@tanstack/react-router'
+import * as React from 'react'
 import { fetchPost } from '../posts'
 
 export const Route = createFileRoute('/posts/$postId')({

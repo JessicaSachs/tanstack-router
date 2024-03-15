@@ -1,6 +1,6 @@
+import { generator, getConfig, type Config } from '@tanstack/router-generator'
+import { isAbsolute, join, normalize } from 'path'
 import { Plugin } from 'vite'
-import { join, normalize, isAbsolute } from 'path'
-import { type Config, getConfig, generator } from '@tanstack/router-generator'
 
 const CONFIG_FILE_NAME = 'tsr.config.json'
 
@@ -22,7 +22,6 @@ export function TanStackRouterVite(inlineConfig: Partial<Config> = {}): Plugin {
     configResolved: async (vite) => {
       ROOT = vite.root
       userConfig = await getConfig(inlineConfig, ROOT)
-      await generate()
     },
     handleHotUpdate: async ({ file }) => {
       const filePath = normalize(file)

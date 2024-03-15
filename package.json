@@ -58,5 +58,8 @@
     "overrides": {
       "use-sync-external-store": "1.2.0"
     }
+  },
+  "dependencies": {
+    "@tanstack/router-vite-plugin": "^1.19.6"
   }
 }
